@@ -1,0 +1,36 @@
+
+.Movercartas {
+  display: flex;
+  margin: 20px;
+}
+
+.Card {
+  width: 18rem;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.Card .card-img {
+  filter: grayscale(100%);
+}
+
+.Hercules {
+  background-color: black;
+  color: white;
+}
+
+.culo {
+  color: white;
+}
+
+.goku {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.goku:hover {
+  background-color: black;
+  color: white;
+}

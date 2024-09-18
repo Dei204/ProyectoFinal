@@ -1,4 +1,40 @@
 {
-    "Users": []
-    
- }
+  "Users": [],
+  "cards": [
+    {
+      "id": "26d2",
+      "nombre": "3554",
+      "precio": 442525,
+      "descripcion": "ergreg",
+      "imagen": "blob:http://localhost:5173/d7cf596a-409e-47d5-9c36-4fa2a358b9f8"
+    },
+    {
+      "id": "53e5",
+      "nombre": "wtg",
+      "precio": 34245,
+      "descripcion": "fgrqgg",
+      "imagen": "blob:http://localhost:5173/2fa236db-6bd0-4feb-b8e8-12ebc68a245a"
+    },
+    {
+      "id": "34dc",
+      "nombre": "rerwwr",
+      "precio": 244312,
+      "descripcion": "fafff",
+      "imagen": "blob:http://localhost:5173/8f4acbba-4d51-48f0-9437-0c4b2fd181af"
+    },
+    {
+      "id": "2c04",
+      "nombre": "3fewffffewfe",
+      "precio": 43434,
+      "descripcion": "fewefafffa",
+      "imagen": "blob:http://localhost:5173/7e775e21-429f-4cad-a048-daf74f6f12f8"
+    },
+    {
+      "id": "46f8",
+      "nombre": "weff",
+      "precio": 5252525,
+      "descripcion": "gregr",
+      "imagen": "blob:http://localhost:5173/f9414d55-53e0-421e-a6eb-91441c55fff2"
+    }
+  ]
+}

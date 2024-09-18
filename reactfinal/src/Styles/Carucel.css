@@ -1,0 +1,19 @@
+.custom_carousel {
+  background-color: black;
+  color: white;
+}
+
+.custom_carousel .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  padding: 5px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.custom_carousel img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+  height: auto; /* Mantiene la proporción */
+  max-height: 350px; /* Aumenta la altura máxima para estirarlo más */
+  object-fit: cover; /* Cubre el área sin distorsionar */
+}
