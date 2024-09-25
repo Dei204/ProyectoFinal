@@ -1,10 +1,9 @@
-
 .titi {
-    background-color: white; 
-    color: black; 
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     margin: auto;
 }
@@ -14,43 +13,42 @@
     flex-direction: column;
 }
 
-
-.puta, .antonio, .alex {
+.punto, .antonio, .alex {
     margin-bottom: 15px;
 }
 
-.puta label, .antonio label, .alex label {
-    display: block;
+.ernesto {
+    font-weight: bold;
     margin-bottom: 5px;
-    color: black; 
+    display: block;
 }
 
 .Jose, .oscar, .andres {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid black; 
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: white; 
-    color: black; 
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
 .Jose:focus, .oscar:focus, .andres:focus {
-    outline: 2px solid black; 
+    border-color: #666;
+    outline: none;
 }
 
-
-button.ernesto {
-    background-color: black; 
-    color: white; 
+.ernesto[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
     border: none;
-    padding: 10px 15px;
     border-radius: 4px;
-    cursor: pointer;
     font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-button.ernesto:hover {
-    background-color: #333; 
+.ernesto[type="submit"]:hover {
+    background-color: #555;
 }
 
 .gato {

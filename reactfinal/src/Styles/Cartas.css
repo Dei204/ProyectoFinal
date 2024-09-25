@@ -1,36 +1,60 @@
-
-.Movercartas {
-  display: flex;
-  margin: 20px;
+.carta {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.Card {
-  width: 18rem;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
+.carta:hover {
+    transform: scale(1.05);
 }
 
-.Card .card-img {
-  filter: grayscale(100%);
+.carta-imagen {
+    max-width: 100%;
+    border-radius: 4px;
 }
 
-.Hercules {
-  background-color: black;
-  color: white;
+.carta-nombre {
+    font-size: 1.5rem;
+    margin: 8px 0;
 }
 
-.culo {
-  color: white;
+.carta-precio {
+    font-size: 1.25rem;
+    color: green;
 }
 
-.goku {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
+.carta-categoria {
+    font-size: 1rem;
+    color: gray;
 }
 
-.goku:hover {
-  background-color: black;
-  color: white;
+.carta-descripcion {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.carta-botones {
+    margin-top: 12px;
+}
+
+.boton-editar, .boton-eliminar {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.boton-editar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.boton-eliminar {
+    background-color: #f44336;
+    color: white;
 }

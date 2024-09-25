@@ -1,12 +1,14 @@
 import React, {useState}  from 'react';
 import getUsers from '../Services/Getusers';
-import "../Styles/Login.css"
+import '../Styles/Login.css'
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [messageClass, setMessageClass] = useState('');
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,10 +25,11 @@ const LoginForm = () => {
             const user = users.find(user => user.email === email);
 
             if (user) {
-                if (user.password === password) {
+                if (user.pass === password) {
                     // Mensaje de éxito
                     setMessage('Inicio de sesión exitoso.');
                     setMessageClass('success-message');
+                    navigate('/home')
 
                     // Limpia los campos del formulario solo si la autenticación es exitosa
                     setEmail('');

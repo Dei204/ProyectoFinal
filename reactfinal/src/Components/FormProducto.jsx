@@ -1,132 +1,135 @@
+
 import React, { useState, useEffect } from 'react';
-import "../Styles/Productos.css";
-import { ProductoData } from '../Services/PosProductos'; 
-import BasicExample from './Cartas';
+import Cartas from '../Components/Cartas.jsx'
+import { fetchItems, addItem, updateItem, deleteItem } from '../Services/Productos.jsx'
+import '../Styles/Productos.css'
+
 
 const FormProducto = () => {
-  const [nombre, setNombre] = useState('');
-  const [precio, setPrecio] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [imagen, setImagen] = useState(null); 
-  const [imagenPreview, setImagenPreview] = useState('');
-  const [cartas, setCartas] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+    const [items, setItems] = useState([]);
+    const [formData, setFormData] = useState({
+        nombre: '',
+        precio: '',
+        img: '',
+        categoria: '',
+        descripcion: ''
+    });
+    const [editIndex, setEditIndex] = useState(null);
+    const [imagePreview, setImagePreview] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const precioNumero = parseFloat(precio);
+    useEffect(() => {
+        const loadData = async () => {
+            const data = await fetchItems();
+            setItems(data);
+        };
+        loadData();
+    }, []);
 
-    if (isNaN(precioNumero)) {
-      alert('Por favor, ingrese un precio válido.');
-      return;
-    }
-
-    const data = { nombre, precio: precioNumero, descripcion, imagen: imagenPreview };
-
-    try {
-      setLoading(true);
-      const response = await ProductoData(data);
-      console.log('API Response:', response);
-
-      setCartas([...cartas, { nombre, precio: precioNumero, descripcion, imagen: imagenPreview }]);
-      alert('Carta añadida correctamente');
-      resetForm();
-    } catch (error) {
-      console.error('Error al añadir carta:', error.message);
-      setErrorMessage('Hubo un problema al añadir la carta. Por favor, inténtelo de nuevo.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const resetForm = () => {
-    setNombre('');
-    setPrecio('');
-    setDescripcion('');
-    setImagen(null);
-    setImagenPreview('');
-    setErrorMessage('');
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImagenPreview(URL.createObjectURL(file));
-      setImagen(file); 
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (imagenPreview) {
-        URL.revokeObjectURL(imagenPreview);
-      }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
-  }, [imagenPreview]);
 
-  return (
-    <div className='negro'>
-      <h1 className='perro'>Agregar Nueva Carta</h1>
-      {errorMessage && <p className="error">{errorMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className='carlos'>
-          <label className='messi'>Nombre:</label>
-          <input
-            className='bicho'
-            type="text"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            required
-          />
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+                setFormData({ ...formData, img: reader.result });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleAddItem = async () => {
+        if (formData.nombre && formData.precio && formData.img && formData.categoria && formData.descripcion) {
+            if (editIndex !== null) {
+                const itemToUpdate = items[editIndex];
+                const updatedItem = await updateItem(itemToUpdate.id, formData);
+                setItems(items.map((item, index) => (index === editIndex ? updatedItem : item)));
+                setEditIndex(null);
+            } else {
+                const newItem = await addItem(formData);
+                setItems([...items, newItem]);
+            }
+            setFormData({
+                nombre: '',
+                precio: '',
+                img: '',
+                categoria: '',
+                descripcion: ''
+            });
+            setImagePreview('');
+        }
+    };
+
+    const handleEditItem = (index) => {
+        setFormData(items[index]);
+        setImagePreview(items[index].img);
+        setEditIndex(index);
+    };
+
+    const handleDeleteItem = async (index) => {
+        const itemToDelete = items[index];
+        await deleteItem(itemToDelete.id);
+        setItems(items.filter((_, i) => i !== index));
+    };
+
+
+    return (
+        <div>
+            <h1>Cartas</h1>
+            <input 
+                type="text" 
+                name="nombre" 
+                placeholder="Nombre" 
+                value={formData.nombre} 
+                onChange={handleChange} 
+            />
+            <input 
+                type="number" 
+                name="precio" 
+                placeholder="Precio" 
+                value={formData.precio} 
+                onChange={handleChange} 
+            />
+            <input 
+                type="file" 
+                accept="image/*" 
+                onChange={handleFileChange} 
+            />
+            {imagePreview && <img src={imagePreview} alt="Vista previa" style={{ maxWidth: '100%', height: 'auto' }} />}
+            <input 
+                type="text" 
+                name="categoria" 
+                placeholder="Categoría" 
+                value={formData.categoria} 
+                onChange={handleChange} 
+            />
+            <textarea 
+                name="descripcion" 
+                placeholder="Descripción" 
+                value={formData.descripcion} 
+                onChange={handleChange} 
+            />
+            <button onClick={handleAddItem}>
+                {editIndex !== null ? 'Actualizar' : 'Agregar'}
+            </button>
+            
+            <div className="card-container">
+                {items.map((item, index) => (
+                    <Cartas 
+                 
+                        key={item.id} 
+                        item={item} 
+                        onEdit={() => handleEditItem(index)} 
+                        onDelete={() => handleDeleteItem(index)} 
+                    />
+                ))}
+            </div>
         </div>
-        <div className='ronaldo'>
-          <label>Precio:</label>
-          <input
-            className='fabio'
-            type="number"
-            step="0.01"
-            value={precio}
-            onChange={(e) => setPrecio(e.target.value)}
-            required
-          />
-        </div>
-        <div className='gallina'>
-          <label className='nixon'>Descripción:</label>
-          <textarea
-            className='arron'
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <div className='niki'>
-          <label className='su'>Imagen:</label>
-          <input
-            className='verano'
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          {imagenPreview && <img src={imagenPreview} alt="Vista previa" style={{ width: '100px', height: '100px', marginTop: '10px' }} />}
-        </div>
-        <button className='playa' type="submit" disabled={loading}>
-          {loading ? 'Añadiendo...' : 'Añadir al Carrito'}
-        </button>
-      </form>
-      <div className='card-list'>
-        {cartas.map((carta, index) => (
-          <BasicExample
-            key={index}
-            nombre={carta.nombre}
-            precio={carta.precio}
-            descripcion={carta.descripcion}
-            imagen={carta.imagen}
-          />
-        ))}
-      </div>
-    </div>
-  );
+    );
 };
 
 export default FormProducto;

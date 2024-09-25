@@ -1,17 +1,17 @@
-import NavBar from '../Components/Navbar'
+import Formnavbar from '../Components/Navbar'
 import Carousel from '../Components/Carousel'
-import Footer from '../Components/Formfooter'
-import Cartas from '../Components/Cartas'
+import Formfoter from '../Components/Formfooter'
 
- 
+import Cartas from '../Components/Cartas'  
+
+
 export default function Home() {
   return (
     <div>
-    <NavBar/>
+    <Formnavbar/>
     <Carousel/>
-    <Cartas />
-   <Footer/>
-
+    <Cartas/>
+    <Formfoter/>
    </div>
   ) 
 }

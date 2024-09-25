@@ -1,8 +1,10 @@
-async function postUsers( ) {
+async function postUsers(user, email, pass) {
     try {
      
         const userData = { 
-            
+            user,
+            email,
+            pass
         };
 
         const response = await fetch("http://localhost:3001/Users", {

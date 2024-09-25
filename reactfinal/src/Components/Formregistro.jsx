@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import getUsers from '../Services/Getusers';
 import postUsers from '../Services/Postusers';
-import "../Styles/Registro.css"
+import '../Styles/Registro.css'
+import { useNavigate } from 'react-router-dom';
  
 const RegistroForm = () => {
     const [nombre, setNombre] = useState('');
@@ -9,6 +10,7 @@ const RegistroForm = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [messageColor, setMessageColor] = useState('black');
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,9 +34,9 @@ const RegistroForm = () => {
             } else {
                 await postUsers(nombre, email, password);
 
-                setMessage('Datos enviados exitosamente.');
+                setMessage('Usuario registrado exitosamente.');
                 setMessageColor('green');
-
+                navigate('/Login')
                 // Limpia los campos del formulario
                 setNombre('');
                 setEmail('');
@@ -51,11 +53,11 @@ const RegistroForm = () => {
 
     return (
 
-
+        
         <div className='titi'>
             <form className='Jesus' onSubmit={handleSubmit}>
-                <div className='puta'>
-                    <label htmlFor="nombre">Nombre:</label>
+                <div className='punto'>
+                    <label className='ernesto' htmlFor="nombre">Nombre:</label>
                     <input
                         className='Jose'
                         type="text"
@@ -75,7 +77,7 @@ const RegistroForm = () => {
                     />
                 </div>
                 <div className='alex'>
-                    <label className='entero' htmlFor="password">Password:</label>
+                    <label className='ernesto' htmlFor="password">Password:</label>
                     <input
                         className='andres'
                         type="password"
@@ -85,9 +87,10 @@ const RegistroForm = () => {
                     />
                 </div>
                 <button className='ernesto' type="submit">Enviar</button>
-                <div className='gato' style={{ color: messageColor }}>{message}</div>
+                <div  className='gato' style={{ color: messageColor }}>{message}</div>
             </form>
         </div>
+    
     );
 };
 

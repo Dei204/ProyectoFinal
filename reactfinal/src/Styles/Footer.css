@@ -1,56 +1,59 @@
 .footer {
-  background-color: #000; 
-  color: #fff; 
-  padding: 20px 0;
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+  padding: 40px 20px; /* Espaciado interno */
+  font-family: 'Arial', sans-serif; /* Tipografía elegante */
+  border-top: 1px solid #333; /* Línea superior sutil en gris oscuro */
 }
 
 .footer-container {
-  display: flex;
-  justify-content: space-around;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex; /* Flexbox para organizar las secciones */
+  justify-content: space-between; /* Espacio entre secciones */
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centrar el contenido */
 }
 
 .footer-section {
-  flex: 1;
-  margin: 0 15px;
+  flex: 1; /* Cada sección ocupa el mismo espacio */
+  margin: 0 20px; /* Espaciado lateral */
 }
 
 .footer-section h3 {
-  border-bottom: 2px solid #fff;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  font-size: 18px; /* Tamaño de título */
+  color: #fff; /* Color del texto */
+  margin-bottom: 15px; /* Espacio debajo del título */
+  text-transform: uppercase; /* Títulos en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
 }
 
-.footer-section p {
-  margin: 5px 0;
+.footer-section p,
+.footer-section ul {
+  color: #ddd; /* Color del texto en gris claro */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
 }
 
 .footer-section ul {
-  list-style: none;
-  padding: 0;
+  list-style: none; /* Sin viñetas */
+  padding: 0; /* Sin relleno */
 }
 
-.footer-section li {
-  margin: 5px 0;
+.footer-section ul li {
+  margin-bottom: 10px; /* Espaciado entre elementos de lista */
 }
 
 .footer-section a {
-  color: #fff; 
-  text-decoration: none;
-  transition: color 0.3s ease;
+  text-decoration: none; /* Sin subrayado */
+  color: #fff; /* Color de enlace blanco */
+  transition: color 0.3s; /* Transición suave */
 }
 
 .footer-section a:hover {
-  color: #ccc; 
+  color: #ddd; /* Color al pasar el mouse en gris claro */
 }
 
 .footer-bottom {
-  text-align: center;
-  padding: 10px 0;
-  background-color: #111;
-}
-
-.footer-bottom p {
-  margin: 0;
+  text-align: center; /* Centrar el texto */
+  margin-top: 20px; /* Espaciado superior */
+  color: #aaa; /* Color del texto más claro para el copyright */
+  font-size: 14px; /* Tamaño del texto */
 }

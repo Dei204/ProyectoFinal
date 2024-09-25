@@ -1,0 +1,54 @@
+.about-us {
+    background-color: #fff;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Georgia', serif; 
+  }
+  
+  .dei {
+    color: #222;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  
+  .about-us p {
+    color: #444;
+    line-height: 1.5;
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .Punta {
+    color: #111;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase; 
+  }
+  
+  .batman {
+    list-style-type: square;
+    padding: 0;
+  }
+  
+  .batman li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #eaeaea; 
+    border-left: 5px solid #000; 
+  }
+  
+  .batman li:hover {
+    background-color: #d9d9d9; 
+  }
+  
+  .perri {
+    font-weight: bold;
+    color: #000;
+  }
+  

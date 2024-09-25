@@ -1,0 +1,58 @@
+.tristana {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 60px 0;
+}
+
+.yumi {
+    background-color: #ffffff; /* Formulario blanco */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 400px; /* Ajusta el ancho según sea necesario */
+    margin: 0 auto; /* Centra el formulario */
+    font-family: 'Georgia', serif; /* Elegante y clásica */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #000; /* Texto negro */
+}
+
+.veigar, .pato, .Escriba {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #000; /* Borde negro */
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f9f9f9; /* Fondo gris claro para inputs */
+}
+
+.veigar:focus, .pato:focus, .Escriba:focus {
+    border-color: #000; /* Borde negro al enfocar */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.lulu {
+    background-color: #000; /* Fondo negro para el botón */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.lulu:hover {
+    background-color: #333; /* Negro más claro al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.atrox {
+    margin-top: 10px;
+}
